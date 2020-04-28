@@ -1,20 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
+import Layout from '../components/layout';
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const InlinedHeader = styled.h1`
-  display: inline;
-`;
-
-const Index = ()  => (
-  <>
+export default ()  => (
+  <Layout>
     <Head>
       <title>About us</title>
     </Head>
@@ -22,7 +12,16 @@ const Index = ()  => (
     <Container>
       <InlinedHeader>About who now?</InlinedHeader>
     </Container>
-  </>
+  </Layout>
 );
 
-export default Index;
+const Container = styled.div `
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const InlinedHeader = styled.h1 `
+  display: inline;
+`;

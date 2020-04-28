@@ -1,9 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
+import Layout from '../components/layout';
 
 export default () => (
-  <>
+  <Layout>
     <Head>
       <title>Welcome to the page</title>
     </Head>
@@ -11,7 +12,7 @@ export default () => (
     <Container>
       <InlinedHeader>Hello World!</InlinedHeader>
     </Container>
-  </>
+  </Layout>
 );
 
 const Container = styled.div `

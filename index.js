@@ -1,25 +1,20 @@
-const express = require('express');
 const next = require('next');
+const express = require('express');
+const router_middleware = require('./server/middleware/router_middleware');
 
-const nextRoutes = require('./server/routes');
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
-const handle = nextRoutes.getRequestHandler(app);
 
-const apiRouter = require('./server/api');
+const app = next({ dev });
+const next_middleware = app.getRequestHandler();
+const { PORT = 8000, IP = '0.0.0.0' } = process.env;
 
 app.prepare()
   .then(() => {
-      const server = express();
+      // order matters
+      const server = express()
+        .use(router_middleware)
+        .use(next_middleware);
 
-      const router = new express.Router().use('/api', apiRouter);
-      server.use(router);
-
-      server.get('*', function(req, res) {
-        handle(req, res);
-      });
-
-      const { PORT = 8000, IP = '0.0.0.0' } = process.env;
       server.listen(PORT, IP, (err) => {
         if (err) { throw err; }
         console.log(`Server running on ${IP}:${PORT}`);
