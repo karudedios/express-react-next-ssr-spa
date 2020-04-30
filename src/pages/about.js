@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import Layout from '../shared/components/layout';
+import Layout from '../components/layout';
 
 export default ()  => (
   <Layout>
