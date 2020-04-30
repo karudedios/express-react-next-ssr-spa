@@ -1,7 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import Layout from '../components/layout';
+import Layout from '../shared/components/layout';
+import fetch from 'isomorphic-fetch';
 
 const IndexPage = ({ message = '' }) => {
   return (
@@ -19,20 +20,10 @@ const IndexPage = ({ message = '' }) => {
 
 // Method used to get data both in the client and in the server.
 IndexPage.getInitialProps = async ({ req }) => {
-  // Client-render
-  if (process.browser) {
-    const response = await fetch('http://localhost:8000/api/ping');
-    const message = await response.text();
+  const response = await fetch('http://localhost:8000/api/ping');
+  const message = await response.text();
 
-    return {
-      message
-    };
-  }
-  // Server render
-  else {
-    // Get from server-side service
-    console.log(req.service);
-  }
+  return { message };
 };
 
 export default IndexPage;

@@ -2,7 +2,7 @@
   "name": "playground-ssr",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "dev": "nodemon",
     "build": "next build",
@@ -13,6 +13,7 @@
   "dependencies": {
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
+    "isomorphic-fetch": "^2.2.1",
     "next": "^9.3.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.7",
+    "dotenv": "^8.2.0",
     "nodemon": "^2.0.3",
     "pg": "^8.0.3",
     "pg-hstore": "^2.3.3",
