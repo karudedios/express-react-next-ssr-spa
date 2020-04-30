@@ -4,5 +4,5 @@ const {
 
 const pingRouter = require('./ping');
 
-module.exports = new Router()
+module.exports = Router()
   .use('/ping', pingRouter);

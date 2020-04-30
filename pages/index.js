@@ -3,17 +3,39 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import Layout from '../components/layout';
 
-export default () => (
-  <Layout>
-    <Head>
-      <title>Welcome to the page</title>
-    </Head>
+const IndexPage = ({ message = '' }) => {
+  return (
+    <Layout>
+      <Head>
+        <title>Welcome to the page</title>
+      </Head>
 
-    <Container>
-      <InlinedHeader>Hello World!</InlinedHeader>
-    </Container>
-  </Layout>
-);
+      <Container>
+        <InlinedHeader>{message}</InlinedHeader>
+      </Container>
+    </Layout>
+  );
+};
+
+// Method used to get data both in the client and in the server.
+IndexPage.getInitialProps = async ({ req }) => {
+  // Client-render
+  if (process.browser) {
+    const response = await fetch('http://localhost:8000/api/ping');
+    const message = await response.text();
+
+    return {
+      message
+    };
+  }
+  // Server render
+  else {
+    // Get from server-side service
+    console.log(req.service);
+  }
+};
+
+export default IndexPage;
 
 const Container = styled.div `
   display: flex;

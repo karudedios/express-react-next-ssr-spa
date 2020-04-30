@@ -2,7 +2,7 @@ const {
   Router
 } = require('express');
 
-module.exports = new Router()
+module.exports = Router()
   .get('/', (_req, res) => {
     res.status(200).send('pong');
   });

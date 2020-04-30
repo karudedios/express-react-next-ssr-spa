@@ -13,7 +13,9 @@ app.prepare()
       // order matters
       const server = express()
         .use(router_middleware)
-        .use(next_middleware);
+        .use((req, res) => {
+          next_middleware(req, res);
+        });
 
       server.listen(PORT, IP, (err) => {
         if (err) { throw err; }
