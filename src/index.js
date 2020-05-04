@@ -1,5 +1,6 @@
 const next = require('next');
 const express = require('express');
+const { resolve } = require('path');
 const router_middleware = require('./server/middleware/router_middleware');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -13,6 +14,7 @@ app
   .then(() => {
     // order matters
     const server = express()
+      .use(express.static(resolve(__dirname, 'public')))
       .use(router_middleware)
       .use((req, res) => {
         next_middleware(req, res);
