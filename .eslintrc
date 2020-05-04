@@ -50,8 +50,9 @@
     "react/react-in-jsx-scope": 0
   },
   "ignorePatterns": [
-    "node_modules",
+    "node_modules/**",
     ".next",
-    ".vscode"
+    ".vscode",
+    "next.config.js"
   ]
 }
