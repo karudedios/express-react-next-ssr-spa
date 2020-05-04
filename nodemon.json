@@ -10,8 +10,5 @@
     ".prettierrc"
   ],
   "ext": "js",
-  "verbose": true,
-  "execMap": {
-    "js": "node -r dotenv/config"
-  }
+  "verbose": true
 }

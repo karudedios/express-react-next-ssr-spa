@@ -1,3 +1,4 @@
+require('custom-env').env();
 const webpack = require('webpack');
 
 const {
