@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export default ({ children }) => {
+export default function Layout({ children }) {
   return (
     <>
       <NavBar>
@@ -19,20 +19,18 @@ export default ({ children }) => {
         </NavBarItem>
       </NavBar>
 
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </>
   );
-};
+}
 
-const NavBar = styled.div `
+const NavBar = styled.div`
   display: flex;
   flex-direction: row;
 `;
 
-const NavBarItem = styled.div `
-  padding: .25rem;
+const NavBarItem = styled.div`
+  padding: 0.25rem;
   transition: background-color ease-in-out 250ms;
 
   :hover {

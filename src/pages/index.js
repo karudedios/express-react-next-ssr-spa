@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Layout from '../components/layout';
 import fetch from 'isomorphic-fetch';
 
-const IndexPage = ({ message = '' }) => {
+export default function IndexPage({ message = '' }) {
   return (
     <Layout>
       <Head>
@@ -16,26 +16,24 @@ const IndexPage = ({ message = '' }) => {
       </Container>
     </Layout>
   );
-};
+}
 
 // Method used to get data both in the client and in the server.
-IndexPage.getInitialProps = async ({ req }) => {
+IndexPage.getInitialProps = async function () {
   const response = await fetch('http://localhost:8000/api/ping');
   const message = await response.text();
 
   return { message };
 };
 
-export default IndexPage;
-
-const Container = styled.div `
+const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
 `;
 
-const InlinedHeader = styled.h1 `
+const InlinedHeader = styled.h1`
   color: #36f;
   display: inline;
 `;

@@ -8,21 +8,24 @@ const app = next({ dev });
 const next_middleware = app.getRequestHandler();
 const { PORT = 8000, IP = '0.0.0.0' } = process.env;
 
-app.prepare()
+app
+  .prepare()
   .then(() => {
-      // order matters
-      const server = express()
-        .use(router_middleware)
-        .use((req, res) => {
-          next_middleware(req, res);
-        });
-
-      server.listen(PORT, IP, (err) => {
-        if (err) { throw err; }
-        console.log(`Server running on ${IP}:${PORT}`);
+    // order matters
+    const server = express()
+      .use(router_middleware)
+      .use((req, res) => {
+        next_middleware(req, res);
       });
+
+    server.listen(PORT, IP, (err) => {
+      if (err) {
+        throw err;
+      }
+      console.log(`Server running on ${IP}:${PORT}`);
+    });
   })
-  .catch(err => {
-    console.error(err.stack)
-    process.exit(1)
+  .catch((err) => {
+    console.error(err.stack);
+    process.exit(1);
   });
