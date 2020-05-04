@@ -1,4 +1,17 @@
 {
-  "watch": [ "src/index.js", "src/server/" ],
-  "ext": "js"
+  "watch": [
+    "src/index.js",
+    "src/server/",
+    "nodemon.json",
+    "next.config.js",
+    ".env",
+    ".babelrc",
+    ".eslintrc",
+    ".prettierrc"
+  ],
+  "ext": "js",
+  "verbose": true,
+  "execMap": {
+    "js": "node -r dotenv/config"
+  }
 }
